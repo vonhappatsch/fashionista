@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar__wrapper__button {
+    padding: 0.3em 0.3em;
+    margin: 0 1em 0 0;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    background-color: #DED9DE;
+    color: #C60303;
+}

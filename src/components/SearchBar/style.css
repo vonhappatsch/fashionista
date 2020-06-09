@@ -1,0 +1,16 @@
+.searchbar {
+    display: flex;
+    margin: 0 0 1.5em 0;
+}
+
+.searchbar__input {
+    border: none;
+    border-bottom: 1px solid #C4C4C4;
+    width: 50vw;
+}
+
+.searchbar__input::placeholder {
+    font-family: 'PT Serif', serif;
+    font-size: 1.1em;
+    color: #2E2E2E;
+}

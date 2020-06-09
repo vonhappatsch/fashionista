@@ -1,0 +1,58 @@
+.product-detail {
+    display: flex;
+}
+
+.product-detail__image {
+    width: 50%;
+}
+
+.product-detail__info {
+    flex-direction: column;
+}
+
+.product-detail__info__name {
+    align-self: center;
+    font-size: 1.2em;
+    margin: 0 0 0.5em 0;
+    color: #2E2E2E;
+}
+
+.product-detail__info__price {
+    display: flex;
+    margin: 1em 0 1em 0;
+}
+
+.product-detail__info__price__value {
+    font-family: 'Roboto', sans-serif;
+    color: #827E7E;
+    margin: 0 0.5em 0 0;
+}
+
+.product-detail__info__price__installments {
+    font-family: 'Roboto', sans-serif;
+    color: #2E2E2E;
+    font-weight: 500;
+    margin: 0;
+}
+
+.product-detail__info__buttons {
+    display: flex;
+    margin: 1em 0 1em 0;
+}
+
+.product-detail__info__buttons__item {
+    border: none;
+    padding: 0.5em;
+    margin: 0 0.8em 0 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #2E2E2E;
+}
+
+.product-detail__info__warning {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.8em;
+    margin: 1.5em 0 3em 0;
+    color: #C60303;
+}

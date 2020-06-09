@@ -1,0 +1,45 @@
+.product__card {
+    width: 50%;
+    flex-direction: column;
+    margin: 2em 0em 2em 0em;
+    text-decoration: none;
+}
+
+.product__card__image {
+    width: 70%;
+    height: auto;
+}
+
+.product__card__name {
+    color: #2E2E2E;
+    width: 70%;
+    word-wrap: break-word;
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 0.5em;
+    margin: 0;
+}
+
+.product__card__discountprice {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.5em;
+    color: #C4C4C4;
+}
+
+.product__card__discountprice-reg {
+    text-decoration: line-through;
+    margin-right: 7.5em;
+}
+
+.product__card__discountprice-actual {
+    color: #827E7E;
+}
+
+.product__card__regprice {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.5em;
+    color: #827E7E;
+}
+
+

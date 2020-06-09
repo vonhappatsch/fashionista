@@ -1,0 +1,45 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1em 0;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 2em 0em 2em;
+}
+
+.header__content__logo {
+    width: 70%;
+    text-decoration: none;
+}
+
+.header__content__logo__item {
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    color: #2E2E2E;
+}
+
+.header__content__icons {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header__content__icons__items {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 1.6em;
+}
+
+.header__content__icons__items__value {
+    margin: 0.8em 0 0 0;
+}
+
+.header__line {
+    border-top: 1px solid #2E2E2E;;
+    width: 90%;
+}

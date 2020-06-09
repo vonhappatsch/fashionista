@@ -1,0 +1,18 @@
+.products {
+    display: flex;
+    flex-direction: column;
+}
+
+.products__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 0 2.5em;
+}
+
+.products__amount {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.8em;
+    color: #827E7E;
+    padding: 0 0 0 1.5em;
+}
