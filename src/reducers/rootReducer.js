@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import fetchProductsReducer from './fetchProductsReducer';
+import catalog from './products';
 
 export default combineReducers({
-  fetchProductsReducer: fetchProductsReducer
+  catalog
 })

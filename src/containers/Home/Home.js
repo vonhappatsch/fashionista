@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../../actions/actions';
+
+import { productsOnSale } from '../../actions/actions';
+
+import { search } from '../../actions/actions';
 
 import './style.css';
 import Header from '../../components/Header/Header';
@@ -6,56 +12,26 @@ import Navbar from '../../components/Navbar/Navbar';
 import Products from '../../components/Produtcs/Products';
 
 function Home() {
-  const [ products, setProducts ] = useState([]);
-  const [ filteredProducts, setFilteredProducts ] = useState([]);
-  const [ sorted, setSorted ] = useState(false);
-  const [ total, setTotal ] = useState(0);
-  const [ loading, setLoading ] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog')
-      .then(res => res.json())
-      .then(data => setProducts(data))
-      .then(setLoading(false))
+    dispatch(fetchProducts());
   }, []);
 
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
+  const products = useSelector(store => store.catalog.products);
+  const total = products.length;
 
-  useEffect(() => {
-    let amount = filteredProducts.length;
-    setTotal(amount);
-  }, [filteredProducts]);
 
-  const handleChange = e => {
-    let search = products.filter(products => products.name.toLowerCase().includes(e.target.value.toLowerCase()));
-    setFilteredProducts(search);
-  };
-
-  const onSale = () => {
-    if (sorted) {
-      setFilteredProducts(products);
-      setSorted(false);
-    } else {
-      let sale = products.filter(products => products.on_sale === true);
-      setFilteredProducts(sale);
-      setSorted(true);
-    }
-  };
 
   return (
     <>
       <Header />
       <Navbar 
-        onChange={e => handleChange(e)} 
-        onSale={() => onSale()}
+         onChange={e => dispatch(search(e))}
+        onSale={() => dispatch(productsOnSale())}
       />
-      {
-        (loading)
-        ? <p className="loading">Carregando...</p>
-        : <Products products={filteredProducts} total={total} />
-      }
+
+      <Products products={products} total={total} />
     </>
   );
 };
