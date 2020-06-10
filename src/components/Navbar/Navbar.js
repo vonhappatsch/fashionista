@@ -11,12 +11,21 @@ const Navbar = (props) => {
         <SearchBar
           onChange={props.onChange}
         />
-        <Button
-          className="navbar__wrapper__button"
-          onClick={props.onSale}
-        >
-          Outlet
-        </Button>
+        <div className="navbar__wrapper__buttons">
+          <Button
+            className="navbar__wrapper__buttons_item"
+            onClick={props.newCollection}
+          >
+            Nova Coleção
+          </Button>
+          <Button
+            className="navbar__wrapper__buttons_item--sale"
+            onClick={props.onSale}
+          >
+            Outlet
+          </Button>
+        </div>
+        
       </div>
     </nav>
   );

@@ -6,6 +6,8 @@ import { productsOnSale } from '../../actions/actions';
 
 import { search } from '../../actions/actions';
 
+import { newCollection } from '../../actions/actions';
+
 import './style.css';
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navbar';
@@ -18,8 +20,8 @@ function Home() {
     dispatch(fetchProducts());
   }, []);
 
-  const products = useSelector(store => store.catalog.products);
-  const total = products.length;
+  const filteredProducts = useSelector(store => store.catalog.filteredProducts);
+  const total = filteredProducts.length;
 
 
 
@@ -27,11 +29,12 @@ function Home() {
     <>
       <Header />
       <Navbar 
-         onChange={e => dispatch(search(e))}
+        onChange={e => dispatch(search(e))}
         onSale={() => dispatch(productsOnSale())}
+        newCollection={() => dispatch(newCollection())}
       />
 
-      <Products products={products} total={total} />
+      <Products products={filteredProducts} total={total} />
     </>
   );
 };

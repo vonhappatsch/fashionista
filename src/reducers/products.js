@@ -2,11 +2,13 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
   OUTLET,
+  NEW_COLLECTION,
   SEARCH
 } from '../actions/types';
 
 const initialState = {
   products: [],
+  filteredProducts: [],
   error: ''
 }
 
@@ -15,7 +17,8 @@ export const catalog = (state = initialState, action) => {
     case FETCH_PRODUCTS: {
       return {
         ...state,
-        products: action.payload
+        products: action.payload,
+        filteredProducts: action.payload
       }
     }
     case FETCH_PRODUCTS_ERROR: {
@@ -27,16 +30,19 @@ export const catalog = (state = initialState, action) => {
     case OUTLET: {
       return {
         ...state,
-        // funciona mas como clicar de novo KKKKKKKKKK socorr
-        products: action.payload.productsOnSale,
-        regProducts: action.payload.regProducts
+        filteredProducts: action.payload.productsOnSale
+      }
+    }
+    case NEW_COLLECTION: {
+      return {
+        ...state,
+        filteredProducts: action.payload.fullPrice
       }
     }
     case SEARCH: {
       return {
         ...state,
-        // dá cannot read property target of undefined ai meu pai
-        products: action.payload.filteredItems
+        filteredProducts: action.payload.searchResult
       }
     }
     default:

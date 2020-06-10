@@ -2,6 +2,7 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
   OUTLET,
+  NEW_COLLECTION,
   SEARCH
 } from './types';
 
@@ -20,30 +21,41 @@ export const fetchProducts = () => dispatch => {
 };
 
 // const getProducts = () => async (dispatch, getState) => {
-//   const { products } = getState().products;
+//   const { products } = getState().catalog;
 // }
 
 
 export const productsOnSale = (catalog) => (dispatch, getState) => {
   const { products } = getState().catalog;
   const onSale = products.filter(products => products.on_sale === true)
-  const regPrice = products.filter(products => products.on_sale === false)
 
   return dispatch({
     type: OUTLET,
     payload: {
-      productsOnSale: onSale,
-      regProducts: regPrice
+      productsOnSale: onSale
     }
   })
 };
 
-export const search = (catalog, e) => (dispatch, getState) => {
-  const { products } = getState().catalog;
+export const newCollection = () => (dispatch, getState) => {
+  const { filteredProducts } = getState().catalog;
+  const fullPrice = filteredProducts.filter(filteredProducts => filteredProducts.on_sale === false)
+
+  return dispatch({
+    type: NEW_COLLECTION,
+    payload: {
+      fullPrice: fullPrice
+    }
+  })
+};
+
+export const search = (e) => (dispatch, getState) => {
+  const { filteredProducts } = getState().catalog;
+
   return dispatch({
     type: SEARCH,
     payload: {
-      filteredProducts: products.filter(products => products.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      searchResult: filteredProducts.filter(filteredProducts => filteredProducts.name.toLowerCase().includes(e.target.value.toLowerCase()))
     }
   })
 }
