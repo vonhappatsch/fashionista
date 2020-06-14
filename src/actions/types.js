@@ -1,7 +1,15 @@
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const FETCH_PRODUCTS_ERROR = "FETCH_PRODUCTS_ERROR";
-export const OUTLET = "OUTLET";
-
 export const NEW_COLLECTION = "NEW_COLLECTION";
-
+export const OUTLET = "OUTLET";
 export const SEARCH = "SEARCH";
+
+export const GET_PRODUCT = "GET_PRODUCT";
+
+
+export const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
+export const REMOVE_FROM_WISHLIST = "REMOVE_FROM_WISHLIST";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_ITEMS = "ADD_ITEMS";
+export const SUBTRACT_ITEMS = "SUBTRACT_ITEMS";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";

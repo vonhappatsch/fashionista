@@ -4,14 +4,16 @@ import { Provider } from 'react-redux';
 
 import './App.css';
 import store from './store/store';
+import Header from './components/Header';
 import Routes from './routes';
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <Header />
         <Routes />
-      </BrowserRouter>  
+      </BrowserRouter>
     </Provider>
   );
 }

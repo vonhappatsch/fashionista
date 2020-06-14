@@ -7,6 +7,9 @@
     border: none;
     border-bottom: 1px solid #C4C4C4;
     width: 50vw;
+    -webkit-box-shadow: 6px 6px 21px -8px rgba(179,179,179,0.23);
+    -moz-box-shadow: 6px 6px 21px -8px rgba(179,179,179,0.23);
+    box-shadow: 6px 6px 21px -8px rgba(179,179,179,0.23);
 }
 
 .searchbar__input::placeholder {

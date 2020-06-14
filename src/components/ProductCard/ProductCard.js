@@ -10,6 +10,7 @@ const ProductCard = (props) => {
     <Link to={{
       pathname: `/product/` + data.name,
       state: {
+        id: data.code_color,
         name: data.name, 
         image: data.image, 
         on_sale: data.on_sale,
@@ -17,7 +18,8 @@ const ProductCard = (props) => {
         regular_price: data.regular_price,
         actual_price: data.actual_price,
         installments: data.installments,
-        discount_percentage: data.discount_percentage
+        discount_percentage: data.discount_percentage,
+        amount: 1
       }}} className="product__card"
     >
       {
@@ -25,10 +27,10 @@ const ProductCard = (props) => {
           ? <img src={data.image} alt="Foto do produto" 
               className="product__card__image" 
             />
-          : <img src="https://placekitten.com/533/664" 
-              alt="Foto não disponível" 
-              className="product__card__image" 
-            />
+          : <img src="https://via.placeholder.com/470x594.png?text=Imagem+n%C3%A3o+dispon%C3%ADvel"
+              alt="Foto do produto não disponível"
+              className="product__card__image"
+            /> 
       }
       <h3 className="product__card__name">{data.name}</h3>
       {
@@ -41,6 +43,6 @@ const ProductCard = (props) => {
       }
     </Link>
   );
-}
+};
 
 export default ProductCard;

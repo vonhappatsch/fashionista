@@ -2,7 +2,7 @@ import React from 'react';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 import './style.css';
-import Input from '../Input/Input';
+import Input from '../Input';
 
 const SearchBar = (props) => {
   return (

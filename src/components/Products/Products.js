@@ -1,9 +1,7 @@
-// tem que ver a relação desse com o productcard na hora dos maps no fetch da api
-
 import React from 'react';
 
 import './style.css';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../ProductCard';
 
 const Products = (props) => {
   return (

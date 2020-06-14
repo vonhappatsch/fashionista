@@ -16,20 +16,20 @@
     word-wrap: break-word;
     font-family: 'PT Serif', serif;
     font-weight: 700;
-    font-size: 0.5em;
+    font-size: 0.75em;
     margin: 0;
 }
 
 .product__card__discountprice {
     display: flex;
     font-family: 'Roboto', sans-serif;
-    font-size: 0.5em;
+    font-size: 0.65em;
     color: #C4C4C4;
 }
 
 .product__card__discountprice-reg {
     text-decoration: line-through;
-    margin-right: 7.5em;
+    margin-right: 4em;
 }
 
 .product__card__discountprice-actual {
@@ -38,8 +38,28 @@
 
 .product__card__regprice {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.5em;
+    font-size: 0.65em;
     color: #827E7E;
 }
 
+@media only screen and (min-width: 768px) {
+    .product__card__image {
+        width: 60%;
+    }
 
+    .product__card__name {
+        font-size: 1em;
+    }
+
+    .product__card__discountprice {
+        font-size: 0.8em;
+    }
+
+    .product__card__discountprice-reg {
+        margin-right: 18em;
+    }
+
+    .product__card__regprice {
+        font-size: 0.8em;
+    }
+}

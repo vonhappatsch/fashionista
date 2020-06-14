@@ -3,7 +3,8 @@
 }
 
 .product-detail__image {
-    width: 50%;
+    width: 45%;
+    height: auto;
 }
 
 .product-detail__info {
@@ -55,4 +56,19 @@
     font-size: 0.8em;
     margin: 1.5em 0 3em 0;
     color: #C60303;
+}
+
+.product-detail__info__buttons--interaction {
+    display: flex;
+}
+
+.back-button {
+    margin: 1em 0 0 1em;
+}
+
+@media only screen and (min-width: 768px) {
+    .product-detail__image {
+        max-width: 40%;
+        height: auto;
+    }
 }

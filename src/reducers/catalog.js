@@ -1,6 +1,7 @@
 import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
+  GET_PRODUCT,
   OUTLET,
   NEW_COLLECTION,
   SEARCH
@@ -9,6 +10,8 @@ import {
 const initialState = {
   products: [],
   filteredProducts: [],
+  keyword: '',
+  onSale: null,
   error: ''
 }
 
@@ -27,21 +30,30 @@ export const catalog = (state = initialState, action) => {
         error: action.payload
       }
     }
+    case GET_PRODUCT: {
+      return {
+        ...state,
+        product: action.payload
+      }
+    }
     case OUTLET: {
       return {
         ...state,
+        onSale: action.payload.onSale,
         filteredProducts: action.payload.productsOnSale
       }
     }
     case NEW_COLLECTION: {
       return {
         ...state,
+        onSale: action.payload.onSale,
         filteredProducts: action.payload.fullPrice
       }
     }
     case SEARCH: {
       return {
         ...state,
+        keyword: action.payload.keyword,
         filteredProducts: action.payload.searchResult
       }
     }

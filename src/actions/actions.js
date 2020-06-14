@@ -3,7 +3,12 @@ import {
   FETCH_PRODUCTS_ERROR,
   OUTLET,
   NEW_COLLECTION,
-  SEARCH
+  SEARCH,
+  ADD_TO_CART,
+  // ADD_ITEMS,
+  // SUBTRACT_ITEMS,
+  REMOVE_FROM_CART,
+  ADD_TO_WISHLIST
 } from './types';
 
 export const fetchProducts = () => dispatch => {
@@ -20,42 +25,75 @@ export const fetchProducts = () => dispatch => {
   );
 };
 
-// const getProducts = () => async (dispatch, getState) => {
-//   const { products } = getState().catalog;
-// }
 
-
-export const productsOnSale = (catalog) => (dispatch, getState) => {
-  const { products } = getState().catalog;
-  const onSale = products.filter(products => products.on_sale === true)
+export const productsOnSale = () => (dispatch, getState) => {
+  const { products, keyword, onSale } = getState().catalog;
+  const filtered = !keyword ? products : products.filter(product => product.name.toLowerCase().includes(keyword));
+  const productsOnSale = onSale ? filtered : filtered.filter(product => product.on_sale === true);
 
   return dispatch({
     type: OUTLET,
     payload: {
-      productsOnSale: onSale
+      onSale: onSale ? null : true,
+      productsOnSale: productsOnSale
     }
   })
 };
 
 export const newCollection = () => (dispatch, getState) => {
-  const { filteredProducts } = getState().catalog;
-  const fullPrice = filteredProducts.filter(filteredProducts => filteredProducts.on_sale === false)
+  const { products, keyword, onSale } = getState().catalog;
+  const filtered = !keyword ? products : products.filter(product => product.name.toLowerCase().includes(keyword));
+  const fullPrice = onSale === false ? filtered : filtered.filter(product => product.on_sale === false);
 
   return dispatch({
     type: NEW_COLLECTION,
     payload: {
+      onSale: onSale === false ? null : false,
       fullPrice: fullPrice
     }
   })
 };
 
-export const search = (e) => (dispatch, getState) => {
-  const { filteredProducts } = getState().catalog;
+export const search = (keyword) => (dispatch, getState) => {
+  const { products, onSale } = getState().catalog;
+  const filtered = !keyword ? products : products.filter(product => product.name.toLowerCase().includes(keyword));
+  const searchResult = onSale === null ? filtered : filtered.filter(product => product.on_sale === onSale);
 
   return dispatch({
     type: SEARCH,
     payload: {
-      searchResult: filteredProducts.filter(filteredProducts => filteredProducts.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      keyword: keyword,
+      searchResult: searchResult
     }
   })
-}
+};
+
+export const addToCart = (product, size) => (dispatch) => {
+  return dispatch({
+    type: ADD_TO_CART,
+    payload: {
+      product: product,
+      size: size
+    }
+  })
+};
+
+export const removeFromCart = (product) => (dispatch) => {
+  // ELE TA REMOVENDO TUDO EM VEZ DE SÓ O UNICO PRODUTOOOOO AAAA
+  return dispatch({
+    type: REMOVE_FROM_CART,
+    payload: {
+      product: product
+    }
+  })
+};
+
+export const addToWishlist = (product) => (dispatch) => {
+  return dispatch({
+    type: ADD_TO_WISHLIST,
+    payload: {
+      product: product,
+      quantity: 1
+    }
+  })
+};

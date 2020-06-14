@@ -1,0 +1,29 @@
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+}
+
+.empty-cart__message {
+    color: #2E2E2E;
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.empty-cart__purchase {
+    padding: 0.5em;
+    margin: 0.5em 0 0 0;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    background-color: #DED9DE;
+    color: #2E2E2E;
+}
+
+@media only screen and (min-width: 768px) {
+    .back-button {
+        margin: 1em 0 0 4em;
+    }
+}

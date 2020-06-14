@@ -1,0 +1,5 @@
+button {
+    -webkit-box-shadow: 6px 6px 21px -8px rgba(179,179,179,0.53);
+    -moz-box-shadow: 6px 6px 21px -8px rgba(179,179,179,0.53);
+    box-shadow: 6px 6px 21px -8px rgba(179,179,179,0.53);
+}

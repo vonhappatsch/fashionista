@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 import './style.css';
 
-// pensar a lógica dos numeros dos likes e produtos aparecendo do lado dos icons
-// ver como esse aqui nao ficar muito grande (e mais reutilizavel) (talvez fazer um component pros icons)
-
 const Header = () => {
+  const cart = useSelector(store => store.cart.cart);
+  const wishlist = useSelector(store => store.wishlist.wishlist);
+
   return (
     <header className="header">
       <div className="header__content">
@@ -18,12 +19,28 @@ const Header = () => {
 
         <div className="header__content__icons">
           <span className="header__content__icons__items">
-            <FavoriteBorderOutlinedIcon />
-            <p className="header__content__icons__items__value">0</p>
+            <Link to="/wishlist" className="header__content__icons__items__link">
+              <FavoriteBorderOutlinedIcon />
+            </Link>
+            <p className="header__content__icons__items__value">
+              {
+                wishlist.length > 0
+                  ? wishlist.length
+                  : 0
+              }
+            </p>
           </span>
           <span className="header__content__icons__items">
-            <ShoppingCartOutlinedIcon />
-            <p className="header__content__icons__items__value">0</p>
+            <Link to="/cart" className="header__content__icons__items__link">
+              <ShoppingCartOutlinedIcon />
+            </Link>
+            <p className="header__content__icons__items__value">
+              {
+                cart.length > 0
+                  ? cart.length
+                  : 0
+              }
+            </p>
           </span>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './style.css';
-import Button from '../Button/Button';
-import SearchBar from '../SearchBar/SearchBar';
+import Button from '../Button';
+import SearchBar from '../SearchBar';
 
 const Navbar = (props) => {
   return (
@@ -12,6 +12,12 @@ const Navbar = (props) => {
           onChange={props.onChange}
         />
         <div className="navbar__wrapper__buttons">
+          <Button
+            className="navbar__wrapper__buttons_item"
+            onClick={props.getProducts}
+          >
+            Home
+          </Button>
           <Button
             className="navbar__wrapper__buttons_item"
             onClick={props.newCollection}
@@ -25,7 +31,6 @@ const Navbar = (props) => {
             Outlet
           </Button>
         </div>
-        
       </div>
     </nav>
   );

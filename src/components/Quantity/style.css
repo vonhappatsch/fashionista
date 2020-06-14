@@ -1,0 +1,21 @@
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity__button {
+    border: none;
+    margin: 0 0.5em 0 0;
+    padding: 0.5em 1em;
+}
+
+.quantity__button--plus {
+    border: none;
+    margin: 0 0 0 0.5em;
+    padding: 0.5em 1em;
+}
+
+.quantity__amount {
+    font-family: 'Roboto', sans-serif;
+    color: #2E2E2E;
+}

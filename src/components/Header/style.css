@@ -27,6 +27,7 @@
     width: 30%;
     display: flex;
     justify-content: flex-end;
+    text-decoration: none;
 }
 
 .header__content__icons__items {
@@ -35,11 +36,26 @@
     padding: 0 0 0 1.6em;
 }
 
+.header__content__icons__items__link {
+    color: #2E2E2E;
+    margin: 0.4em 0 0 0;
+}
+
 .header__content__icons__items__value {
-    margin: 0.8em 0 0 0;
+    margin: 1.2em 0 0 0;
 }
 
 .header__line {
-    border-top: 1px solid #2E2E2E;;
+    border-top: 1px solid #2E2E2E;
     width: 90%;
+}
+
+@media only screen and (min-width: 768px) {
+    .header__content {
+        padding: 0.5em 6em 0em 6em;
+    }
+
+    .header__content__logo__item {
+        font-size: 1.5em;
+    }
 }
