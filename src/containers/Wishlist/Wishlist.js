@@ -20,7 +20,7 @@ const Wishlist = () => {
     <section className="wishlist">
       {
         Object.keys(wishlist).length === 0
-        ? <h3>Curta algo! 💖</h3>
+        ? <h3>Curta algo! <span role="img" aria-label="heart-emoji">💖</span></h3>
         : Object.keys(wishlist).map(key =>
           <article className="wishlist__item">
             <img className="wishlist__item__image" src={wishlist[key].product.image} alt="foto do produto" />

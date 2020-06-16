@@ -14,12 +14,9 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  });
 
   const filteredProducts = useSelector(store => store.catalog.filteredProducts);
-  useEffect(() => {
-    console.log(filteredProducts)
-  })
   const total = filteredProducts.length;
 
   return (

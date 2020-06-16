@@ -20,7 +20,7 @@ const ProductsInCart = () => {
     <section className="purchased">
       {
         Object.keys(cart).map(key =>
-          <article className="purchased__item">
+          <article className="purchased__item" key={cart[key].product.id}>
             <img className="purchased__item__image" src={cart[key].product.image} alt="foto do produto" />
             <div className="purchased__item__info">
               <h3 className="purchased__item__info__name">{cart[key].product.name}</h3>
