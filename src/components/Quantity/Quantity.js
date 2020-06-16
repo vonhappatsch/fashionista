@@ -1,19 +1,25 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import './style.css';
 import Button from '../Button';
 
-const Quantity = () => {
-  const amount = useSelector(store => store.cart.quantity);
+const Quantity = (props) => {
+  const handleButton = () => {
+    return (props.quantity === 0) ? true : false
+  }
 
   return (
     <div className="quantity">
-      <Button className="quantity__button">-</Button>
+      <Button className="quantity__button"
+        onClick={() => props.subtractQuantity()}
+        disableButton={handleButton()}
+      >-</Button>
       <p className="quantity__amount">
-        {amount}
+        {props.quantity}
       </p>
-      <Button className="quantity__button--plus">+</Button>
+      <Button className="quantity__button--plus"
+        onClick={() => props.addQuantity()}
+      >+</Button>
     </div>
   );
 };

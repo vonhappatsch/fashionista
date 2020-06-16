@@ -48,6 +48,12 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color: #2E2E2E;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: #827E7E;
+    cursor: none;
 }
 
 .product-detail__info__warning {

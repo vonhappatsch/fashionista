@@ -4,9 +4,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  like: false,
-  wishlist: [],
-  total: 0
+  wishlist: {}
 }
 
 export const wishlist = (state = initialState, action) => {
@@ -14,13 +12,14 @@ export const wishlist = (state = initialState, action) => {
     case ADD_TO_WISHLIST: {
       return {
         ...state,
-        wishlist: [...state.wishlist, action.payload]
+        wishlist: {...state.wishlist, [action.payload.product.id]: action.payload}
       }
     }
     case REMOVE_FROM_WISHLIST: {
+      const {[action.payload.product.id]: deleted, ...wishlist} = state.wishlist;
       return {
         ...state,
-
+        wishlist: wishlist
       }
     }
     default:

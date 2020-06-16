@@ -1,39 +1,44 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router';
+import { removeFromWishlist } from '../../actions/actions';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import './style.css';
+import Button from '../../components/Button';
 
 const Wishlist = () => {
   const wishlist = useSelector(store => store.wishlist.wishlist);
   const history = useHistory();
-
-  useEffect(() => {
-    console.log(wishlist)
-  })
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     history.push("/");
   }
 
-  // tem que corrigir que ta indo duplicado e eu esuqeci de proibir ir sem tamanho AAAKKKK
-  // fazer a ação pro total
-
   return (
     <section className="wishlist">
       {
-        wishlist.map(item =>
+        Object.keys(wishlist).length === 0
+        ? <h3>Curta algo! 💖</h3>
+        : Object.keys(wishlist).map(key =>
           <article className="wishlist__item">
-            <img className="wishlist__item__image" src={item.product.image} />
+            <img className="wishlist__item__image" src={wishlist[key].product.image} alt="foto do produto" />
             <div className="wishlist__item__info">
-              <h3 className="wishlist__item__info__name">{item.product.name}</h3>
+              <h3 className="wishlist__item__info__name">{wishlist[key].product.name}</h3>
               {
-                item.product.on_sale 
-                ? <p className="wishlist__item__info__price">{item.product.actual_price}</p> 
-                : <p className="wishlist__item__info__price">{item.product.regular_price}</p>
+                wishlist[key].product.on_sale 
+                ? <p className="wishlist__item__info__price">{wishlist[key].product.actual_price}</p> 
+                : <p className="wishlist__item__info__price">{wishlist[key].product.regular_price}</p>
               }
-              <p className="wishlist__item__info__size">{item.product.installments}</p>
+              <p className="wishlist__item__info__size">{wishlist[key].product.installments}</p>
+            </div>
+            <div className="wishlist__item__remove">
+              <Button className="wishlist__item__remove__button"
+                onClick={() => dispatch(removeFromWishlist(wishlist[key].product))}
+              >
+                Desapegar
+              </Button>  
             </div>
           </article>
         )

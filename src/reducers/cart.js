@@ -6,9 +6,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  cart: [],
-  quantity: 0,
-  total: 0
+  cart: {}
 }
 
 export const cart = (state = initialState, action) => {
@@ -16,24 +14,26 @@ export const cart = (state = initialState, action) => {
     case ADD_TO_CART: {
       return {
         ...state,
-        cart: [...state.cart, action.payload]
+        cart: {...state.cart, [action.payload.product.id]: action.payload}
       }
     }
     case ADD_ITEMS: {
       return {
-        ...state
+        ...state,
+        cart: {...state.cart, [action.payload]: {...state.cart[action.payload], quantity: state.cart[action.payload].quantity +1}}
       }
     }
     case SUBTRACT_ITEMS: {
       return {
         ...state,
-
+        cart: {...state.cart, [action.payload]: {...state.cart[action.payload], quantity: state.cart[action.payload].quantity -1}}
       }
     }
     case REMOVE_FROM_CART: {
+      const {[action.payload.product.id]: deleted, ...cart} = state.cart;
       return {
         ...state,
-        cart: state.cart.filter(item => item.id !== action.payload.id)
+        cart: cart
       }
     }
     default:

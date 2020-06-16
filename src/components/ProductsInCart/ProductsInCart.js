@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../../actions/actions';
+import { addQuantity } from '../../actions/actions';
+import { subtractQuantity } from '../../actions/actions';
 
 import './style.css';
 import Button from '../Button';
@@ -9,32 +11,34 @@ import Quantity from '../Quantity';
 const ProductsInCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector(store => store.cart.cart);
-
-  useEffect(() => {
-    console.log(cart)
-  })
-
-  // tem que corrigir que ta indo duplicado e eu esuqeci de proibir ir sem tamanho AAAKKKK
-  // fazer a ação pro total
+  
+  const handleCheckOut = () => {
+    alert("Coming soon!");
+  }
 
   return (
     <section className="purchased">
-
       {
-        cart.map(item =>
+        Object.keys(cart).map(key =>
           <article className="purchased__item">
-            <img className="purchased__item__image" src={item.product.image} />
+            <img className="purchased__item__image" src={cart[key].product.image} alt="foto do produto" />
             <div className="purchased__item__info">
-              <h3 className="purchased__item__info__name">{item.product.name}</h3>
+              <h3 className="purchased__item__info__name">{cart[key].product.name}</h3>
               {
-                item.product.on_sale ? <p className="purchased__item__info__price">{item.product.actual_price}</p> : <p className="purchased__item__info__price">{item.product.regular_price}</p>
+                cart[key].product.on_sale 
+                ? <p className="purchased__item__info__price">{cart[key].product.actual_price}</p> 
+                : <p className="purchased__item__info__price">{cart[key].product.regular_price}</p>
               }
-              <p className="purchased__item__info__size">{item.product.chosenSize}</p>
-              <Quantity />
+              <p className="purchased__item__info__size">{cart[key].product.chosenSize}</p>
+              <Quantity 
+                quantity={cart[key].quantity}
+                addQuantity={() => dispatch(addQuantity(cart[key].product.id))}
+                subtractQuantity={() => dispatch(subtractQuantity(cart[key].product.id))}
+              />
             </div>
             <div>
               <Button className="purchased__remove"
-                onClick={() => dispatch(removeFromCart(item.product))}
+                onClick={() => dispatch(removeFromCart(cart[key].product))}
               >
                 x
               </Button>
@@ -46,9 +50,13 @@ const ProductsInCart = () => {
       <hr className="purchased__line" />
 
 
-      <h3 className="purchased__total">
-        Total: xx
-        </h3>
+      <h3 className="purchased__checkout">
+        <Button className="purchased__checkout__button"
+          onClick={() => handleCheckOut()}
+        >
+          Checkout to know more!
+        </Button>
+      </h3>
     </section>
   );
 };

@@ -5,10 +5,11 @@ import {
   NEW_COLLECTION,
   SEARCH,
   ADD_TO_CART,
-  // ADD_ITEMS,
-  // SUBTRACT_ITEMS,
   REMOVE_FROM_CART,
-  ADD_TO_WISHLIST
+  ADD_ITEMS,
+  SUBTRACT_ITEMS,
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST
 } from './types';
 
 export const fetchProducts = () => dispatch => {
@@ -73,13 +74,13 @@ export const addToCart = (product, size) => (dispatch) => {
     type: ADD_TO_CART,
     payload: {
       product: product,
-      size: size
+      size: size,
+      quantity: 1
     }
   })
 };
 
 export const removeFromCart = (product) => (dispatch) => {
-  // ELE TA REMOVENDO TUDO EM VEZ DE SÓ O UNICO PRODUTOOOOO AAAA
   return dispatch({
     type: REMOVE_FROM_CART,
     payload: {
@@ -88,12 +89,34 @@ export const removeFromCart = (product) => (dispatch) => {
   })
 };
 
+export const addQuantity = (id) => (dispatch) => {
+  return dispatch({
+    type: ADD_ITEMS,
+    payload: id
+  })
+};
+
+export const subtractQuantity = (id) => (dispatch) => {
+  return dispatch({
+    type: SUBTRACT_ITEMS,
+    payload: id
+  })
+};
+
 export const addToWishlist = (product) => (dispatch) => {
   return dispatch({
     type: ADD_TO_WISHLIST,
     payload: {
-      product: product,
-      quantity: 1
+      product: product
+    }
+  })
+};
+
+export const removeFromWishlist = (product) => (dispatch) => {
+  return dispatch({
+    type: REMOVE_FROM_WISHLIST,
+    payload: {
+      product: product
     }
   })
 };

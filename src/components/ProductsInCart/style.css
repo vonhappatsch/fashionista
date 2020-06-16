@@ -58,8 +58,16 @@
     width: 90%;
 }
 
-.purchased__total {
-    color: #2E2E2E;
+.purchased__checkout {
+    display: flex;
+}
+
+.purchased__checkout__button {
+    font-size: 1em;
+    border: none;
+    padding: 1em 1em;
+    background-color: #2E2E2E;
+    color: #E5E5E5;
 }
 
 @media only screen and (min-width: 768px) {

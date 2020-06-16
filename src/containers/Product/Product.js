@@ -13,11 +13,7 @@ const Product = () => {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-  const [ chosenSize, setChosenSize ] = useState("");
-  
-  const handleClick = () => {
-    history.push("/");
-  }
+  const [ chosenSize, setChosenSize ] = useState(null);
 
   const product = {
     id: location.state.id,
@@ -29,6 +25,10 @@ const Product = () => {
     installments: location.state.installments,
     sizes: location.state.sizes,
     chosenSize: chosenSize
+  }
+
+  const handleClick = () => {
+    history.push("/");
   }
 
   return (
@@ -70,7 +70,8 @@ const Product = () => {
             Selecione um tamanho antes de colocar no carrinho
           </p>
           <div className="product-detail__info__buttons--interaction">
-            <Button className="product-detail__info__buttons__item"
+            <Button disableButton={!chosenSize}
+              className="product-detail__info__buttons__item"
               onClick={() => dispatch(addToCart(product, chosenSize))}
             >
               Adicionar ao carrinho

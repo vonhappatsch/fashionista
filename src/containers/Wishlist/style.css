@@ -41,6 +41,22 @@
     color: #827E7E;
 }
 
+.wishlist__item__remove {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wishlist__item__remove__button {
+    border: none;
+    padding: 0.5em;
+    color: #C60303;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
 .wishlist__back-button {
     align-self: flex-start;
     margin: 1.5em;

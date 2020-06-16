@@ -24,8 +24,8 @@ const Header = () => {
             </Link>
             <p className="header__content__icons__items__value">
               {
-                wishlist.length > 0
-                  ? wishlist.length
+                Object.keys(wishlist).length > 0
+                  ? Object.keys(wishlist).length
                   : 0
               }
             </p>
@@ -36,8 +36,8 @@ const Header = () => {
             </Link>
             <p className="header__content__icons__items__value">
               {
-                cart.length > 0
-                  ? cart.length
+                Object.keys(cart).length > 0
+                  ? Object.keys(cart).length
                   : 0
               }
             </p>

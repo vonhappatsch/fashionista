@@ -9,7 +9,6 @@ import ProductsInCart from '../../components/ProductsInCart';
 
 const Cart = () => {
   let history = useHistory();
-
   const cart = useSelector(story => story.cart.cart);
   
   const handleClick = () => {
@@ -20,7 +19,7 @@ const Cart = () => {
     <>
       <section className="cart">
         {
-          cart.length === 0
+          Object.keys(cart).length === 0
           ? <EmptyCart />
           : <ProductsInCart />
         }
